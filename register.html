@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: 
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(123.jpg);
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 25px;
+      background-color: lavender;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .container h2 {
+      text-align: center;
+    }
+    
+    .container input[type="text"],
+    .container input[type="email"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var otp = '';
+
+      function generateOTP() {
+        var digits = '0123456789';
+        var otpLength = 6;
+        otp = '';
+        for (var i = 0; i < otpLength; i++) {
+          otp += digits[Math.floor(Math.random() * 10)];
+        }
+      }
+
+      $('#generateOTP').click(function() {
+        generateOTP();
+        alert('OTP generated: ' + otp);
+      });
+
+      $('form').submit(function(event) {
+        event.preventDefault(); // Prevent form submission
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var enteredOTP = $('#otp').val();
+
+        // You can perform validation here if needed
+
+        if (enteredOTP !== otp) {
+          alert('Invalid OTP!');
+          return;
+        }
+
+        // Send the data to the server
+        $.ajax({
+          url: 'register.php',
+          method: 'POST',
+          data: { name: name, email: email, password: password },
+          success: function(response) {
+            // Handle the server response
+            console.log(response);
+            // You can redirect the user or perform other actions based on the response
+          },
+          error: function(xhr, status, error) {
+            // Handle errors
+            console.log(error);
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Registration</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <label for="otp">OTP:</label>
+      <input type="text" id="otp" name="otp" required>
+      <button type="button" id="generateOTP">Generate OTP</button>
+
+      <label for="submit"></label>
+      <button type="button" id="submit">Submit</button>
+      
+      

@@ -1,0 +1,6 @@
+<html>
+<head>
+<title>House-Inn</title>
+</head>
+<body>
+<html>

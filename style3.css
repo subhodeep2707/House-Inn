@@ -1,0 +1,40 @@
+body {
+    background-image: 
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(about123.jpg);
+}
+.container {
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: aliceblue;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  textarea {
+    margin-bottom: 10px;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  

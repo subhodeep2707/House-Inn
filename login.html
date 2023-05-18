@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: 
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(123.jpg);
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .container h2 {
+      text-align: center;
+    }
+    
+    .container input[type="email"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('form').submit(function(event) {
+        event.preventDefault(); // Prevent form submission
+        var email = $('#email').val();
+        var password = $('#password').val();
+
+        // You can perform validation here if needed
+
+        // Send the data to the server
+        $.ajax({
+          url: 'login.php',
+          method: 'POST',
+          data: { email: email, password: password },
+          success: function(response) {
+            // Handle the server response
+            console.log(response);
+            // You can redirect the user or perform other actions based on the response
+          },
+          error: function(xhr, status, error) {
+            // Handle errors
+            console.log(error);
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
+</html>

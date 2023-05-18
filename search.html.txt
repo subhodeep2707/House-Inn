@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>shuhs</title>
+</head>
+<body>
+<div class="search">
+            <form action="" class="search-bar">
+                <input type="text" placeholder="search home by location" name="q">
+                <button type="submit"><img src="search.png"></button>
+            </form>
+        </div>
+</body>
+</html>
